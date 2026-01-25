@@ -45,31 +45,16 @@ def preprocess_image(image_path: str) -> np.ndarray:
     # Convert to RGB for processing
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-    # Apply shadow removal using morphological operations
-    # Convert to grayscale for shadow analysis
-    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-
-    # Create shadow mask using threshold
-    _, shadow_mask = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)
-
-    # Apply morphological closing to fill small holes
-    kernel = cv2.getStructuringElement(cv2.MORPH_CLOSE, (5, 5))
-    shadow_mask = cv2.morphologyEx(shadow_mask, cv2.MORPH_CLOSE, kernel)
-
-    # Dilate shadow mask slightly to remove shadow boundaries
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
-    shadow_mask = cv2.dilate(shadow_mask, kernel, iterations=1)
-
-    # Apply shadow removal using inpainting
-    shadow_mask = cv2.cvtColor(shadow_mask, cv2.COLOR_GRAY2RGB)
-    image = cv2.inpaint(image, cv2.cvtColor(shadow_mask, cv2.COLOR_RGB2GRAY), 3, cv2.INPAINT_TELEA)
+    # Apply light denoising while preserving text edges
+    image = cv2.bilateralFilter(image, 9, 75, 75)
 
     # Convert to LAB color space for better contrast enhancement
     lab = cv2.cvtColor(image, cv2.COLOR_RGB2LAB)
     l, a, b = cv2.split(lab)
 
-    # Apply CLAHE (Contrast Limited Adaptive Histogram Equalization)
-    clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+    # Apply moderate CLAHE to enhance text contrast
+    # Tuned for book pages: higher clip limit for more enhancement
+    clahe = cv2.createCLAHE(clipLimit=2.5, tileGridSize=(12, 12))
     l = clahe.apply(l)
 
     # Merge back to LAB
