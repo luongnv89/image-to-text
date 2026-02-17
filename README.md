@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.png" alt="image-to-text Logo" width="400"></p>
+
 # Image-to-Text OCR Module
 
 A high-performance Optical Character Recognition (OCR) module for extracting text from book page images using state-of-the-art libraries. This MVP provides production-ready text extraction with 100% accuracy on validated test cases.

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="400" height="120">
+  <defs>
+    <style>
+      .wordmark { font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif; font-size: 28px; font-weight: 700; fill: #000000; }
+      .tagline { font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif; font-size: 11px; font-weight: 400; fill: #6B7280; }
+    </style>
+  </defs>
+  <!-- Symbol: Image frame with text lines emerging -->
+  <g transform="translate(20, 15)">
+    <!-- Image frame -->
+    <rect x="0" y="0" width="72" height="90" rx="6" ry="6" fill="none" stroke="#000000" stroke-width="3"/>
+    <!-- Mountain/image indicator inside frame -->
+    <polygon points="10,65 25,42 36,55 46,38 62,65" fill="#22C55E" opacity="0.9"/>
+    <!-- Sun circle in frame -->
+    <circle cx="52" cy="28" r="8" fill="#22C55E" opacity="0.6"/>
+    <!-- Text lines emerging from frame -->
+    <rect x="78" y="18" width="36" height="4" rx="2" fill="#000000"/>
+    <rect x="78" y="30" width="30" height="4" rx="2" fill="#6B7280"/>
+    <rect x="78" y="42" width="34" height="4" rx="2" fill="#6B7280"/>
+    <rect x="78" y="54" width="24" height="4" rx="2" fill="#6B7280" opacity="0.6"/>
+    <rect x="78" y="66" width="28" height="4" rx="2" fill="#6B7280" opacity="0.4"/>
+    <!-- Arrow indicating transformation -->
+    <path d="M72 45 L78 45" stroke="#22C55E" stroke-width="2" stroke-dasharray="2,2"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="156" y="62" class="wordmark">image-to-text</text>
+  <text x="156" y="82" class="tagline">High-performance OCR module</text>
+</svg>
